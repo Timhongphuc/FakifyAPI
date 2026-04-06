@@ -10,6 +10,8 @@ from dotenv import load_dotenv
 
 app = FastAPI()
 
+load_dotenv()
+
 @app.get("/")
 def hello():
     return {"headline": "Hello, dear developer!", "text_info": "I'm Tim Seufert, a 16 y.o. high school developer and hobbyist with a strong focus on developing well designed, user friendly AI solutions. I'm a student working on personal projects to enhance my software development skills. I've built the FakifyAPI a few weeks after finalizing my initial Fakify (fake news detector) project. I wanted to create a way for users of the internet to analyze and validate information from sources like articles or blog posts in a secure and reliable way (through retrieval augmented generation with the Mistral and Exa API's). Today I'am proudly presenting the FakifyAPI. This interface should allow users to embed my Fakify service into their own applications and services. All in all my project aims for an easy use of the Fakify project and making the internet a little bit safer. I hope you will enjoy using this API. See you on the internet :) - Tim Seufert", "api_status": "API is operational", "documentation": "/docs", "about_the_project": "https:github.com/Timhongphuc/FakifyAPI"}
@@ -24,6 +26,8 @@ def analysis(url: str):
 #--------------------------------------------------------------------------
 # EXA API (Content Endpoint)
 
+    load_dotenv()
+
     if input_text:
         exa = Exa(api_key = os.environ.get("EXA_API_KEY"))
 
@@ -37,6 +41,8 @@ def analysis(url: str):
 
 #--------------------------------------------------------------------------
 # #MISTRAL API (Endpoint No1) Search query for Exa API
+
+    load_dotenv()
 
     if input_text:
         client = Mistral(api_key=os.environ.get("MISTRAL_API_KEY"))
@@ -75,25 +81,28 @@ def analysis(url: str):
         type = "auto"
     )
 
-    search_results = result.results[3].text #Take the first 4 Search results (in index 3)
+    search_results = result.results[2].text #Take the first 4 Search results (in index 3)
     print(search_results)
     print("Results fetched!")
 
     #--------------------------------------------------------------------------
     # Mistral API (API Endpoint No2) AI Summary of RAG analysis
 
+    load_dotenv()
+
     with Mistral(
                     api_key=os.environ.get("MISTRAL_API_KEY"),
                 ) as mistral:
 
-                    res = mistral.chat.complete(model="mistral-large-latest", messages=[
+                    res = mistral.chat.complete(model="mistral-small-latest", messages=[
                         {
                         "content": f"Please provide me with an comprehensive analysis. These are the sources you can use to fulfill your task: The content of the News article you HAVE to check: {article_content}, similar search results to the topic (to verify credibility). Take a deep look into the sources: {search_results}. These sources are really important. If there are other Websites that provide the same information as given in the article, rate the article as real or likely real. If the topic in the article appears in other sources and the source is trustworthy change the rating accordingly.",
                         "role": "user"
                         },
                         {
                             "content": os.environ.get("SYSTEM_PROMPT"),
-                            "role": "system"
+                            "role": "system",
+                            "resonse_format": "json_object"
                         },
                     ], stream=False)
 
