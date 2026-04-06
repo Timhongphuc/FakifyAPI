@@ -19,6 +19,7 @@ def analysis():
 
     load_dotenv()
 
+    input_text = "XYZ"
 #--------------------------------------------------------------------------
 # EXA API (Content Endpoint)
 
