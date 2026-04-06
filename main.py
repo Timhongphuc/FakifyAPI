@@ -15,11 +15,12 @@ def hello():
     return {"headline": "Hello, dear developer!", "text_info": "I'm Tim Seufert, a 16 y.o. high school developer and hobbyist with a strong focus on developing well designed, user friendly AI solutions. I'm a student working on personal projects to enhance my software development skills. I've built the FakifyAPI a few weeks after finalizing my initial Fakify (fake news detector) project. I wanted to create a way for users of the internet to analyze and validate information from sources like articles or blog posts in a secure and reliable way (through retrieval augmented generation with the Mistral and Exa API's). Today I'am proudly presenting the FakifyAPI. This interface should allow users to embed my Fakify service into their own applications and services. All in all my project aims for an easy use of the Fakify project and making the internet a little bit safer. I hope you will enjoy using this API. See you on the internet :) - Tim Seufert", "api_status": "API is operational", "documentation": "/docs", "about_the_project": "https:github.com/Timhongphuc/FakifyAPI"}
 
 @app.get("/app")
-def analysis():
+def analysis(url: str):
 
     load_dotenv()
 
-    input_text = "example.com" #Test input.
+    #input_text = "example.com" #Test input.
+    input_text = url
 #--------------------------------------------------------------------------
 # EXA API (Content Endpoint)
 
