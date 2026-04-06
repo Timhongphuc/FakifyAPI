@@ -19,7 +19,7 @@ def analysis():
 
     load_dotenv()
 
-    input_text = "XYZ"
+    input_text = "example.com" #Test input.
 #--------------------------------------------------------------------------
 # EXA API (Content Endpoint)
 
@@ -53,7 +53,6 @@ def analysis():
         search = response.outputs[0].content
 
         print(search)
-        #st.markdown(search)
         print("Received search query!")
 
 #--------------------------------------------------------------------------
@@ -61,7 +60,6 @@ def analysis():
 
     exa = Exa(api_key = os.environ.get("EXA_API_KEY"))
 
-    st.write("Fetching results...")
 
     result = exa.search_and_contents(
         search,
@@ -102,7 +100,6 @@ def analysis():
                     results_final = res.choices[0].message.content
                     print(results_final)
 
-                    #with st.chat_message("user"):
                     print("Finished analysis!")
 
     #----------------------------------------------------------------
