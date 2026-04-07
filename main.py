@@ -117,8 +117,13 @@ def analysis(url: str):
 
     return {"results": f"{results_final}"}
 
+@app.get("/trustcheck")
+def trust():
+    return{"TrustCheck": "Test Trust!!!"}
+
 @app.get("/stats")
 def stats():
     return{"Hello": "Hello World!"}
+
 
 uvicorn.run(app)
