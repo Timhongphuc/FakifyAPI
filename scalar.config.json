@@ -2,8 +2,8 @@
   "$schema": "https://registry.scalar.com/@scalar/schemas/config",
   "scalar": "2.0.0",
   "info": {
-    "title": "Scalar Starter Kit",
-    "description": "Get Started with the Scalar Docs"
+    "title": "Fakify Developer Documentation",
+    "description": "Get Started with the FakifyAPI. FakifyAPI is a powerful service, allowing you to scan suspicious news articles for misleading information."
   },
   "siteConfig": {
     "logo": {
@@ -54,10 +54,10 @@
             "mode": "flat",
             "children": {
               "/api": {
-                "type": "openapi",
-                "filepath": "docs/api-reference/openapi.yaml",
-                "title": "Example API",
-                "icon": "phosphor/regular/plug"
+            "type": "openapi",
+            "url": "http://127.0.0.1:8000/openapi.json",
+            "title": "FakifyAPI Endpoints",
+            "icon": "phosphor/regular/plug"
               }
             }
           }
