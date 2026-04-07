@@ -7,7 +7,6 @@ from exa_py import Exa
 import os
 from dotenv import load_dotenv
 
-
 app = FastAPI()
 
 load_dotenv()
@@ -18,11 +17,13 @@ def hello():
 
 @app.get("/app")
 def analysis(url: str):
+#def analysis():
+
+    #input_text = "https://www.example.com"  # Test input.
+    input_text = url
 
     load_dotenv()
 
-    #input_text = "example.com" #Test input.
-    input_text = url
 #--------------------------------------------------------------------------
 # EXA API (Content Endpoint)
 
@@ -81,7 +82,7 @@ def analysis(url: str):
         type = "auto"
     )
 
-    search_results = result.results[2].text #Take the first 4 Search results (in index 3)
+    search_results = result.results[3].text #Take the first 4 Search results (in index 3)
     print(search_results)
     print("Results fetched!")
 
@@ -116,5 +117,7 @@ def analysis(url: str):
 
     return {"results": f"{results_final}"}
 
+@app.get("/")
+def
 
 uvicorn.run(app)
