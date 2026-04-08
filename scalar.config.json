@@ -19,7 +19,7 @@
         "children": {
           "/api": {
             "type": "openapi",
-            "url": "http://127.0.0.1:8000/openapi.json",
+            "url": "openapi.json",
             "title": "FakifyAPI Endpoints",
             "icon": "phosphor/regular/plug"
           }
