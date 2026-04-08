@@ -19,7 +19,7 @@
         "children": {
           "/api": {
             "type": "openapi",
-            "url": "openapi.json",
+            "filepath": "openapi.json",
             "title": "FakifyAPI Endpoints",
             "icon": "phosphor/regular/plug"
           }
